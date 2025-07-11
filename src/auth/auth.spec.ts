@@ -1,12 +1,12 @@
+import * as bcrypt from 'bcrypt'
 import { Test, TestingModule } from '@nestjs/testing'
-import { AuthService } from './auth.service'
-import { PrismaService } from '../prisma/prisma.service'
-import { JwtService } from '@nestjs/jwt'
-import { I18nService } from 'nestjs-i18n'
 import { CACHE_MANAGER, Cache } from '@nestjs/cache-manager'
 import { UnauthorizedException } from '@nestjs/common'
-import * as bcrypt from 'bcrypt'
 import { SignUpDTO, SignInDTO, ChangePasswordDTO } from './dtos/auth'
+import { PrismaService } from '../common/database/prisma/prisma.service'
+import { JwtService } from '@nestjs/jwt'
+import { I18nService } from 'nestjs-i18n'
+import { AuthService } from './auth.service'
 
 // Mock do bcrypt para não precisar fazer o hash de verdade nos testes
 jest.mock('bcrypt', () => ({

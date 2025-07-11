@@ -1,7 +1,7 @@
 import { Controller, Get, UseGuards, UseInterceptors } from '@nestjs/common'
-import { AuthGuard } from 'src/auth/auth.guard'
+import { AuthGuard } from '../auth/auth.guard'
 import { UserService } from './user.service'
-import { CacheInterceptor } from 'src/cache/cache.interceptor'
+import { CacheInterceptor } from '../common/interceptors/cache/cache.interceptor'
 
 @Controller('user')
 export class UserController {

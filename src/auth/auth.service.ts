@@ -1,9 +1,9 @@
+import * as bcrypt from 'bcrypt'
 import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
-import { ChangePasswordDTO, SignInDTO, SignUpDTO } from './dtos/auth'
-import { PrismaService } from 'src/prisma/prisma.service'
-import * as bcrypt from 'bcrypt'
 import { I18nService } from 'nestjs-i18n'
+import { ChangePasswordDTO, SignInDTO, SignUpDTO } from './dtos/auth'
+import { PrismaService } from '../common/database/prisma/prisma.service'
 
 @Injectable()
 export class AuthService {

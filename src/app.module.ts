@@ -5,8 +5,8 @@ import { UserModule } from './user/user.module'
 import * as path from 'path'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { PrismaModule } from './prisma/prisma.module'
-import { RedisModule } from './redis/redis.module'
+import { PrismaModule } from './common/database/prisma/prisma.module'
+import { RedisModule } from './common/database/redis/redis.module'
 
 @Module({
   imports: [
