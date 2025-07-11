@@ -1,19 +1,16 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common'
+import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { ChangePasswordDTO, SignInDTO, SignUpDTO } from './dtos/auth'
 import { PrismaService } from 'src/prisma/prisma.service'
 import * as bcrypt from 'bcrypt'
 import { I18nService } from 'nestjs-i18n'
-// Importe tanto CACHE_MANAGER quanto Cache do mesmo pacote
-import { CACHE_MANAGER, Cache } from '@nestjs/cache-manager'
 
 @Injectable()
 export class AuthService {
   constructor(
     private prismaService: PrismaService,
     private jwtService: JwtService,
-    private i18nService: I18nService,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache
+    private i18nService: I18nService
   ) {}
 
   async signup(data: SignUpDTO, lang: string) {
