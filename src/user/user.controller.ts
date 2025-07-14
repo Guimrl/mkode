@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards, UseInterceptors } from '@nestjs/common'
+import { Controller, Get, Param, ParseIntPipe, UseGuards, UseInterceptors } from '@nestjs/common'
 import { AuthGuard } from '../auth/auth.guard'
 import { UserService } from './user.service'
 import { CacheInterceptor } from '../common/interceptors/cache/cache.interceptor'
@@ -10,7 +10,14 @@ export class UserController {
   @UseGuards(AuthGuard)
   @UseInterceptors(CacheInterceptor)
   @Get('users')
-  async users() {
-    return this.userService.users()
+  async findAll() {
+    return this.userService.findAll()
+  }
+
+  @UseGuards(AuthGuard)
+  @UseInterceptors(CacheInterceptor)
+  @Get(':id')
+  async findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.userService.findById(id)
   }
 }
